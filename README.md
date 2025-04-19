@@ -26,7 +26,7 @@ npm install
 ### 3. Inicie a aplicação
 
 ```bash
-npm start
+npm run dev
 ```
 
 ### 4. Acesse no navegador
