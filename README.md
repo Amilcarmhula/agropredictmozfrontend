@@ -55,14 +55,5 @@ http://localhost:5173
    - Recomendações agrícolas.
    - Tabela com histórico de previsões.
 
-## 📸 Captura de Tela 
-
-> Adicione aqui uma imagem ou GIF demonstrando a aplicação, por exemplo:
-
-```
-![Demo AgroPredictMoz](print.png)
-```
-
----
 
 👨‍💻 Desenvolvido por Amilcar Mula(https://github.com/Amilcarmhula)
