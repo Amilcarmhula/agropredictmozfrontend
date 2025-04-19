@@ -6,6 +6,22 @@ function App() {
   const [historico, setHistorico] = useState([]);
   const [clima, setClima] = useState(null);
 
+  // Metodo para envio de regiao para o servidor para que ele possa consultar os dados do clima segundo a regiao e salvar no banco de dados
+  const saveWeather = (e) => {
+    const endpoint = `http://127.0.0.1:8000/add/previsao/${cidade}`
+    fetch(endpoint, {
+      method: 'POST',
+      headers:{
+        'Content-Type':'text/plain'
+      },
+      body:cidade
+    }).then(req => req.text())
+    .then(data => {
+      console.log('Resposta do servidor:',data)
+    }).catch(err => {
+      console.error('Erro ao salvar dados: ',err)
+    })
+  }
 
   const getClima = (e) => {
     // e.preventDefault();
@@ -33,8 +49,9 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getClima();
-    getHistorico();
+    saveWeather()
+    getClima()
+    getHistorico()
   }
 
 
