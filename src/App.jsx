@@ -4,9 +4,23 @@ import './App.css'
 function App() {
   const [cidade, setCidade] = useState('');
   const [historico, setHistorico] = useState([]);
+  const [clima, setClima] = useState(null);
 
-  const getPrevisao = (e) => {
-    e.preventDefault();
+
+  const getClima = (e) => {
+    // e.preventDefault();
+    const endpoint = `http://127.0.0.1:8000/condicoesClimaticas/${cidade}`
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(dados => {
+        setClima(dados)
+      }).catch(err => {
+        console.error('Erro ao buscar dados: ', err)
+      })
+  }
+
+  const getHistorico = (e) => {
+    // e.preventDefault();
     const endpoint = `http://127.0.0.1:8000/previsoes/${cidade}`
     fetch(endpoint)
       .then(res => res.json())
@@ -17,6 +31,12 @@ function App() {
       })
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getClima();
+    getHistorico();
+  }
+
 
 
 
@@ -24,7 +44,7 @@ function App() {
     <>
       <div className="container py-4">
         <h1 className="mb-4">AgroPredictMoz</h1>
-        <form className="row g-3 mb-4" onSubmit={getPrevisao}>
+        <form className="row g-3 mb-4" onSubmit={handleSubmit}>
           <div className="col-auto">
             <input
               type="text"
@@ -43,21 +63,21 @@ function App() {
         <div className="card mb-4">
           <div className="card-body">
             <h5 className="card-title">Resultado:</h5>
-            {historico.map((h, index) => (
-              <div key={index}>
-                <p><strong>Cidade:</strong> {h.localizacao}</p>
-                <p><strong>Temperatura:</strong> {h.temperatura} °C</p>
-                <p><strong>Humidade:</strong> {h.humidade} %</p>
-                <p><strong>Precipitação:</strong> {h.precipitacao} mm</p>
-                <p><strong>Luz Solar:</strong> {h.luz_solar} h</p>
-                <p><strong>Recomendações:</strong></p>
-                {h.recomendacao.map((m, n) => (
-                    <ul key={n}>
-                      <li >{m.recomendacao}</li>
-                    </ul>
-                  ))}
+            {clima && (
+              <div>
+                <span><strong>Cidade:</strong> {clima.localizacao} </span>
+                <span><strong>Temperatura:</strong> {clima.temperatura}°C </span>
+                <span><strong>Humidade:</strong> {clima.humidade}% </span>
+                <span><strong>Precipitação:</strong> {clima.precipitacao}mm </span>
+                <span><strong>Luz Solar:</strong> {clima.luz_solar}h</span>
+                <p className='text-start pt-3'><strong>Recomendações:</strong></p>
+                {clima.recomendacao?.map((m, n) => (
+                  <ul key={n}>
+                    <li className='text-start'>{m.recomendacao}</li>
+                  </ul>
+                ))}
               </div>
-            ))}
+            )}
 
           </div>
         </div>
@@ -66,7 +86,7 @@ function App() {
         <h5>Histórico de Previsões</h5>
         <table className="table table-bordered">
           <thead className="table-light">
-            <tr>
+            <tr className='align-middle'>
               <th>Data</th>
               <th>Cidade</th>
               <th>Temp (°C)</th>
@@ -80,16 +100,16 @@ function App() {
 
             {historico.map((d, i) => (
               <tr key={i}>
-                <td>{d.data_registo}</td>
-                <td>{d.localizacao}</td>
-                <td>{d.temperatura}</td>
-                <td>{d.humidade}</td>
-                <td>{d.precipitacao}</td>
-                <td>{d.luz_solar}</td>
-                <td>
+                <td className='align-middle'>{d.data_registo}</td>
+                <td  className='align-middle'>{d.localizacao}</td>
+                <td className='align-middle'>{d.temperatura}</td>
+                <td className='align-middle'>{d.humidade}</td>
+                <td className='align-middle'>{d.precipitacao}</td>
+                <td className='align-middle'>{d.luz_solar}</td>
+                <td className='align-middle'>
                   {d.recomendacao.map((m, n) => (
                     <ul key={n}>
-                      <li >{m.recomendacao}</li>
+                      <li className='text-start'>{m.recomendacao}</li>
                     </ul>
                   ))}
                 </td>
