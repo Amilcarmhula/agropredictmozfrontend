@@ -9,7 +9,7 @@ function App() {
 
   const getClima = (e) => {
     // e.preventDefault();
-    const endpoint = `http://127.0.0.1:8000/condicoesClimaticas/${cidade}`
+    const endpoint = `http://127.0.0.1:8000/clima/regiao/${cidade}`
     fetch(endpoint)
       .then(res => res.json())
       .then(dados => {
@@ -21,7 +21,7 @@ function App() {
 
   const getHistorico = (e) => {
     // e.preventDefault();
-    const endpoint = `http://127.0.0.1:8000/previsoes/${cidade}`
+    const endpoint = `http://127.0.0.1:8000/previsao/all/${cidade}`
     fetch(endpoint)
       .then(res => res.json())
       .then(dados => {
@@ -101,7 +101,7 @@ function App() {
             {historico.map((d, i) => (
               <tr key={i}>
                 <td className='align-middle'>{d.data_registo}</td>
-                <td  className='align-middle'>{d.localizacao}</td>
+                <td className='align-middle'>{d.localizacao}</td>
                 <td className='align-middle'>{d.temperatura}</td>
                 <td className='align-middle'>{d.humidade}</td>
                 <td className='align-middle'>{d.precipitacao}</td>
