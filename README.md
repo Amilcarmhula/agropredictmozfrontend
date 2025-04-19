@@ -60,7 +60,7 @@ http://localhost:5173
 > Adicione aqui uma imagem ou GIF demonstrando a aplicação, por exemplo:
 
 ```
-![Demo AgroPredictMoz](./public/print.png)
+![Demo AgroPredictMoz](print.png)
 ```
 
 ---
