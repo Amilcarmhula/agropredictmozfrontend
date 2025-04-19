@@ -13,8 +13,8 @@
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/agropredictmoz.git
-cd agropredictmoz
+git clone https://github.com/Amilcarmhula/agropredictmozfrontend.git
+cd agropredictmozfrontend
 ```
 
 ### 2. Instale as dependências
@@ -32,7 +32,7 @@ npm start
 ### 4. Acesse no navegador
 
 ```
-http://localhost:3000
+http://localhost:5173
 ```
 
 > ⚠️ Certifique-se de que o backend (API) esteja rodando localmente em `http://127.0.0.1:8000` para que a aplicação funcione corretamente.
@@ -55,14 +55,14 @@ http://localhost:3000
    - Recomendações agrícolas.
    - Tabela com histórico de previsões.
 
-## 📸 Captura de Tela (Opcional)
+## 📸 Captura de Tela 
 
 > Adicione aqui uma imagem ou GIF demonstrando a aplicação, por exemplo:
 
 ```
-![Demo AgroPredictMoz](./screenshot.png)
+![Demo AgroPredictMoz](./src/assets/print.png)
 ```
 
 ---
 
-👨‍💻 Desenvolvido por [Seu Nome](https://github.com/seu-usuario)
+👨‍💻 Desenvolvido por Amilcar Mula(https://github.com/Amilcarmhula)
